@@ -1,0 +1,71 @@
+
+<div class="text-center">
+  <img src="https://infodeclat.com/wp-content/uploads/2020/07/LOGO-INFODEC-1.png" width="10%">
+  <p>Prueba técnica desarrollo en Angular, Realizado por Ing. David A Vega Tel 304336032</p>
+ 
+</div>
+
+<div class="container w-50 border">
+  <pre>
+    Archivo fuente
+    <a href="">Repositorio</a>
+    Mock-Data
+    <a href="https://hguv4se5de.execute-api.sa-east-1.amazonaws.com/produccion">Repositorio</a>
+  </pre>
+</div>
+
+<div *ngIf="vista1==true"
+    class="container w-50 border p-4  animate__animated  animate__slideInLeft" 
+    style="margin-top: 20px; background-color:gainsboro;">
+    <app-inicio-input
+    (onEnter)="buscar($event )"
+    ></app-inicio-input>
+    <!-- (onDebounce)="sugerencias( $event )" -->
+    <hr>
+    <div class="card mb-3 w-10" style="max-width: 540px; max-height: 300px;">
+      <!-- aqui comienza el recorrido del array -->
+      <div class="row g-0" *ngFor="let dato of perfil"> 
+        <div class="col-md-4">
+          <img [src]="dato.avatar" class="img-fluid border" width="250px">
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h5 class="card-title">Datos Personales</h5>
+            <p class="card-text"><strong>Nombres: </strong>{{dato.first_name}} {{dato.last_name}}</p>
+            <p class="card-text"><strong>Email: </strong>{{dato.email}}</p>
+            <button
+            (click)="opcionVista(2)" 
+            type="button" 
+            class="btn btn-primary">ver mas detalles...
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+
+<div 
+*ngIf="vista2==true"
+class="container w-50 border p-4 animate__animated animate__slideInRight" 
+style="margin-top: 20px; margin-bottom: 20px;">
+  
+  <button 
+  (click)="opcionVista(1)" 
+  type="button" 
+  class="btn btn-secondary">Regresar</button>
+  <br>
+  <div class="card mb-3" *ngFor="let dato of perfil">
+    <div class="text-center" style="margin-top: 10px;">
+      <img [src]="dato.avatar" class="img-fluid border" width="250px">
+    </div>
+  
+    <div class="card-body ">
+      <h5 class="card-title text-center"><strong>{{dato.first_name}} {{dato.last_name}}</strong></h5>
+      <p class="card-text"><strong>Número Documento: </strong> 11235813</p>
+      <p class="card-text"><strong>Número Teléfono: </strong> 3043360132</p>
+      <p class="card-text"><strong>Profesión: </strong>Ingeniero de Sistemas</p>
+      <p class="card-text"><strong>Pais: </strong>Colombia</p>
+      <p class="card-text"><strong>Ciudad: </strong>Santiago de Cali</p>
+    </div>
+  </div>
+</div>
